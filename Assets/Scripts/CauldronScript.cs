@@ -18,9 +18,9 @@ public class CauldronScript : MonoBehaviour {
 	{
 		if(lightPoint)
 		{
-			cauldronFire = lightPoint.transform.Find("CauldronFire").transform.Find("InnerCore").particleEmitter;
-			lightPoint.light.enabled = true;
-			lightPoint.light.intensity = 0;
+			cauldronFire = lightPoint.transform.Find("CauldronFire").transform.Find("InnerCore").GetComponent<ParticleEmitter>();
+			lightPoint.GetComponent<Light>().enabled = true;
+			lightPoint.GetComponent<Light>().intensity = 0;
 			cauldronFire.emit = false;
 			//lightPoint.transform.Find("CauldronFire").transform.Find("OuterCore").particleEmitter.emit = false;
 		}
@@ -37,7 +37,7 @@ public class CauldronScript : MonoBehaviour {
 		
 		if(lightEnabled)
 		{
-			lightPoint.light.intensity += 0.01f;
+			lightPoint.GetComponent<Light>().intensity += 0.01f;
 			cauldronFire.emit = true;
 			//lightPoint.transform.Find("CauldronFire").transform.Find("OuterCore").particleEmitter.emit = true;
 		}

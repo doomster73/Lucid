@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour {
 					charTransform.Rotate(0,180,0);
 				}
 				charMovement = new Vector3(-1,0,0); //charTransform.TransformDirection(Vector3.left);
-				animChild.animation.CrossFade("Walk",0.2f);
+				animChild.GetComponent<Animation>().CrossFade("Walk",0.2f);
 				if(charController.isGrounded)
 				{
 					sprintTime += 1 * Time.deltaTime;
@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour {
 					charTransform.Rotate(0,180,0);
 				}
 				charMovement = new Vector3(1,0,0); //charTransform.TransformDirection(Vector3.left);
-				animChild.animation.CrossFade("Walk",0.2f);
+				animChild.GetComponent<Animation>().CrossFade("Walk",0.2f);
 				if(charController.isGrounded)
 				{
 					sprintTime += 1 * Time.deltaTime;	
@@ -227,7 +227,7 @@ public class PlayerController : MonoBehaviour {
 		{
 			//stop the character moving
 			charMovement = Vector3.zero;	
-			animChild.animation.Stop();
+			animChild.GetComponent<Animation>().Stop();
 			sprintTime = 0f;
 		}
 		
@@ -254,7 +254,7 @@ public class PlayerController : MonoBehaviour {
 		{
 			if(pickupObj.tag == "CandleSphereTag")
 			{
-				pickupObj.rigidbody.position = charController.transform.position;
+				pickupObj.GetComponent<Rigidbody>().position = charController.transform.position;
 				Debug.Log("YOU HAVE CANDLESHPERE");	
 			}
 		}
@@ -272,7 +272,7 @@ public class PlayerController : MonoBehaviour {
 		charController.Move(charMovement * Time.deltaTime);
 		
 		if (grab && charMovement.x != 0)
-			pushingCube.rigidbody.AddForce(charMovement * 2, ForceMode.Impulse);
+			pushingCube.GetComponent<Rigidbody>().AddForce(charMovement * 2, ForceMode.Impulse);
 	}
 	
 	void Push()
@@ -379,9 +379,9 @@ public class PlayerController : MonoBehaviour {
 		{
 			if(pickupObj.tag == "CandleSphereTag")
 			{
-				if(!pickupObj.transform.FindChild("CandleSphereLight").light.enabled && Input.GetMouseButtonDown(0))
+				if(!pickupObj.transform.FindChild("CandleSphereLight").GetComponent<Light>().enabled && Input.GetMouseButtonDown(0))
 				{
-					pickupObj.transform.FindChild("CandleSphereLight").light.enabled = true;
+					pickupObj.transform.FindChild("CandleSphereLight").GetComponent<Light>().enabled = true;
 				}
 			}
 		}

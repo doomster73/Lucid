@@ -7,7 +7,7 @@ public class SplashLightScript : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		SplashLight = transform.light;
+		SplashLight = transform.GetComponent<Light>();
 		
 		SplashLight.intensity = 0f;
 	}

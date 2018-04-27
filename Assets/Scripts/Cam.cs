@@ -35,7 +35,7 @@ public class Cam : MonoBehaviour {
 		//cameraStart = new Vector3(-5f,1f,-1.5f);
 		cameraTransform.position = cameraStart;
 		
-		cameraTransform.camera.fieldOfView = startFieldOfView;
+		cameraTransform.GetComponent<Camera>().fieldOfView = startFieldOfView;
 		
 	}
 	
