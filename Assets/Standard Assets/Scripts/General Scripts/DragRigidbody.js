@@ -10,7 +10,7 @@ private var springJoint : SpringJoint;
 function Update ()
 {
 	// Make sure the user pressed the mouse down
-	if (!Input.GetMouseButtonDown (0))
+	if (!Input.GetMouseButton(0))
 		return;
 
 	var mainCamera = FindCamera();
@@ -58,7 +58,7 @@ function DragObject (distance : float)
 	springJoint.connectedBody.drag = drag;
 	springJoint.connectedBody.angularDrag = angularDrag;
 	var mainCamera = FindCamera();
-	while (Input.GetMouseButton (0))
+	while (Input.GetMouseButton(0))
 	{
 		var ray = mainCamera.ScreenPointToRay (Input.mousePosition);
 		springJoint.transform.position = ray.GetPoint(distance);
