@@ -743,7 +743,8 @@ public class PlayerController : MonoBehaviour {
 
 		if(Input.GetMouseButtonDown(0) && !pickedUp && !switchObj && !holdingMatch && Time.timeScale == 1 && !crouching)
 		{
-			if(GameObject.FindGameObjectWithTag("GameStats").GetComponent<GameStats>().Matches > 0)
+		    var matches = GameObject.FindGameObjectWithTag("GameStats").GetComponent<GameStats>().Matches;
+		    if(matches > 0)
 			{
                 myAnimstate = animState.matchDraw;
                 
@@ -752,7 +753,6 @@ public class PlayerController : MonoBehaviour {
                 Invoke("DrawMatch", 0.67f);
 				
 			}
-			
 		}
 		else if(Input.GetMouseButtonDown(0) && !pickedUp && !switchObj && holdingMatch && Time.timeScale == 1)
 		{
