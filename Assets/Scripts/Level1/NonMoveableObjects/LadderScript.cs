@@ -8,7 +8,7 @@ public class LadderScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		climbDirection = transform.FindChild("ladderTop").transform.position - transform.FindChild("ladderBottom").transform.position;
+		climbDirection = transform.Find("ladderTop").transform.position - transform.Find("ladderBottom").transform.position;
 	}
 	
 	public Vector3 Climbposition()

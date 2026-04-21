@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameStats : MonoBehaviour 
@@ -7,9 +9,9 @@ public class GameStats : MonoBehaviour
 	
 	Transform currentCheckPointTransform;
 	
-	GUIText matchMonitor;
-	
-	public GUITexture mTexture;
+	Text matchMonitor;
+
+	public RawImage mTexture;
 	public Texture2D  matchTexture;
 	public Texture2D  burnTexture;
 	public Texture2D  matchBox;
@@ -48,7 +50,7 @@ public class GameStats : MonoBehaviour
 		//When Target is set, rather than just setting the variable we also load the loading scene level straight away
 		set{
 			targetLevel = value;
-			Application.LoadLevel(value);
+			SceneManager.LoadScene(value);
 		}
 	}
 	void Awake()
@@ -62,7 +64,7 @@ public class GameStats : MonoBehaviour
 		
 		if(GameObject.Find("Matches"))
 		{
-			matchMonitor = GameObject.Find("Matches").GetComponent<GUIText>();
+			matchMonitor = GameObject.Find("Matches").GetComponent<Text>();
 		}
 		
 		matchNum = matches;		
@@ -94,7 +96,7 @@ public class GameStats : MonoBehaviour
 		}*/
 		
 		
-		if(Application.loadedLevelName == "Hospital")
+		if(SceneManager.GetActiveScene().name == "Hospital")
 		{
 			if(matches > 0)
 				GUI.Label(new Rect(100, 480, 100, 200), matchTexture);

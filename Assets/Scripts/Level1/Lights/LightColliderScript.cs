@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class LightColliderScript : MonoBehaviour {
 	
 	string debugText = "";
 	
-	public GUIText dText;
+	public Text dText;
 	
 	public bool lightLit;
 
