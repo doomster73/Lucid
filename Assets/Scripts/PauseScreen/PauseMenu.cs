@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PauseMenu : MonoBehaviour {
@@ -70,12 +71,12 @@ public class PauseMenu : MonoBehaviour {
 			if(GUI.Button (new Rect(120, 200, buttonWidth, buttonHeight), "Restart Dream", pauseStyle))
 			{
 				paused = false;
-				Application.LoadLevel(Application.loadedLevel);	
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 			}
 			if(GUI.Button (new Rect(180, 300, buttonWidth, buttonHeight), "End Dream", pauseStyle))
 			{
 				paused = false;
-				Application.LoadLevel(2);	
+				SceneManager.LoadScene(2);
 			}
 			
 			

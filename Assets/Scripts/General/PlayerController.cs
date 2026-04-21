@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 //using UnityEditor;
@@ -103,7 +105,7 @@ public class PlayerController : MonoBehaviour {
 	
 	public float candleSphereRollDistance = 5f; //roll distance for candlesphere
 	
-	GUIText guiInLight;
+	Text guiInLight;
 	
 	public GameObject MatchPrefab;
 	List<GameObject> MatchList = new List<GameObject>();
@@ -118,9 +120,9 @@ public class PlayerController : MonoBehaviour {
 		charTransform = transform; //sets local variable to characters current transform
 		charController = GetComponent<CharacterController>(); //loads in character controller object
 		playerDirection = Directions.Right;
-        animChild = transform.FindChild("Boy-test-001-unity");
+        animChild = transform.Find("Boy-test-001-unity");
 		myText = GetComponentInChildren<TextMesh>();
-		guiInLight = GameObject.Find("GUI Text").GetComponent<GUIText>();
+		guiInLight = GameObject.Find("GUI Text").GetComponent<Text>();
 		fadeCamera = GameObject.Find("Main Camera");
 		gameCam = Camera.main.GetComponent<Cam>();
 		
@@ -172,7 +174,7 @@ public class PlayerController : MonoBehaviour {
 			if(!playerDying || !playerDead)
 			{
 				deathTimer += Time.deltaTime;
-				if(Application.loadedLevel == 3)
+				if(SceneManager.GetActiveScene().buildIndex == 3)
 				{
 					//gameCam.audio.volume = 1.0f;
 					AudioListener.volume = 1.0f;
@@ -762,7 +764,7 @@ public class PlayerController : MonoBehaviour {
 		//candlesphere throw
 		if(Input.GetMouseButtonUp(0) && pickedUp && !switchObj)
 		{
-			if(pickupObj != null && (pickupObj.tag == "CandleSphereTag" && pickupObj.transform.FindChild("CandleSphereLight").GetComponent<Light>().enabled))
+			if(pickupObj != null && (pickupObj.tag == "CandleSphereTag" && pickupObj.transform.Find("CandleSphereLight").GetComponent<Light>().enabled))
 			{
                 
 //				switch(playerDirection)
@@ -780,7 +782,7 @@ public class PlayerController : MonoBehaviour {
 				//MoveObject(pickupObj.transform, pickupObj.transform.position, new Vector3(0,0,0), 10.0f);
 				pickedUp = false;
 				
-				Transform child = pickupObj.transform.FindChild("PlayerCollider");
+				Transform child = pickupObj.transform.Find("PlayerCollider");
 				
 				CandleSphereScript script = child.GetComponent<CandleSphereScript>();
 				
@@ -794,9 +796,9 @@ public class PlayerController : MonoBehaviour {
 			{
 				if(pickupObj.tag == "CandleSphereTag")
 				{
-					if(!pickupObj.transform.FindChild("CandleSphereLight").GetComponent<Light>().enabled)
+					if(!pickupObj.transform.Find("CandleSphereLight").GetComponent<Light>().enabled)
 					{
-						pickupObj.transform.FindChild("CandleSphereLight").GetComponent<Light>().enabled = true;
+						pickupObj.transform.Find("CandleSphereLight").GetComponent<Light>().enabled = true;
 						pickupObj.transform.GetComponent<RayCastLight>().lightLit = true;
 					}
 				}
@@ -812,9 +814,9 @@ public class PlayerController : MonoBehaviour {
 		{
 			if(pickupObj.tag == "CandleSphereTag")
 			{
-				if(!pickupObj.transform.FindChild("CandleSphereLight").GetComponent<Light>().enabled && Input.GetMouseButtonDown(0))
+				if(!pickupObj.transform.Find("CandleSphereLight").GetComponent<Light>().enabled && Input.GetMouseButtonDown(0))
 				{
-					pickupObj.transform.FindChild("CandleSphereLight").GetComponent<Light>().enabled = true;
+					pickupObj.transform.Find("CandleSphereLight").GetComponent<Light>().enabled = true;
 					pickupObj.transform.GetComponent<RayCastLight>().lightLit = true;
 				}
 			}

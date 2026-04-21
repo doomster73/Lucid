@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class LoadingScreen : MonoBehaviour {
@@ -20,6 +21,6 @@ public class LoadingScreen : MonoBehaviour {
 		yield return new WaitForSeconds(3);
 		print("YO2");
 		
-		Application.LoadLevel(level);
+		SceneManager.LoadScene(level);
 	}
 }

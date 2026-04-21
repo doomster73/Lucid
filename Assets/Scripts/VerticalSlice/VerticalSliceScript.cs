@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -38,7 +39,7 @@ public class VerticalSliceScript : MonoBehaviour {
 		
 		if(GameObject.Find("Matches"))
 		{
-			GameObject.Find("Matches").GetComponent<GUIText>().enabled = true;	
+			GameObject.Find("Matches").GetComponent<Text>().enabled = true;
 		}
 		
 	}

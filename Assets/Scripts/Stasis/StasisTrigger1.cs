@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class StasisTrigger1 : MonoBehaviour {
@@ -9,7 +10,7 @@ public class StasisTrigger1 : MonoBehaviour {
 		if(other.tag == "Player")
 		{
 			Debug.Log("Player Entered Trigger");
-			Application.LoadLevel(3);
+			SceneManager.LoadScene(3);
 		}
 		
 		

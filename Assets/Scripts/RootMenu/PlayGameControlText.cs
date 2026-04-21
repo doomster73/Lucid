@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PlayGameControlText : MonoBehaviour {
@@ -28,6 +29,6 @@ public class PlayGameControlText : MonoBehaviour {
 		print ("Load Stasis Down");
 		//renderer.material.color = Color.green;
 		//GameObject.FindGameObjectWithTag("GameStats").GetComponent<GameStats>().TargetLevel = "Stasis";
-		Application.LoadLevel(2);
+		SceneManager.LoadScene(2);
 	}
 }

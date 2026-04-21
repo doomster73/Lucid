@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class RootMenuScript : MonoBehaviour 
@@ -17,7 +18,7 @@ public class RootMenuScript : MonoBehaviour
 		
 		if(GameObject.Find("Matches"))
 		{
-			GameObject.Find("Matches").GetComponent<GUIText>().enabled = false;	
+			GameObject.Find("Matches").GetComponent<Text>().enabled = false;
 		}
 	}
 	
